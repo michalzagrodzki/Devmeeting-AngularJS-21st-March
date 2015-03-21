@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app='ProductApp'>
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Angular App</title>
+
+  <!-- stylesheets -->
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+
+  <!-- bower components -->
+  <script src="bower_components/angular/angular.js"></script>
+
+  <!-- angular files -->
+  <script src="js/main.js"></script>
+
+</head>
+
+<body>
+<div class="container" ng-controller='ProductListCtrl'>
+  <div class='row'>
+    <button class='btn btn-default' ng-class="{'active' : sorting.by === 'price'}"
+            ng-click="sortBy('price')">
+                  <span ng-show="sorting.by === 'price'">
+                    <span ng-show="!sorting.desc" class="glyphicon glyphicon-chevron-up"></span>
+                    <span ng-show="sorting.desc" class="glyphicon glyphicon-chevron-down"></span>
+                  </span>Price
+    </button>
+    <button class='btn btn-default' ng-class="{'active' : sorting.by === 'title'}"
+            ng-click="sortBy('title')">
+                  <span ng-show="sorting.by === 'title'">
+                    <span ng-show="!sorting.desc" class="glyphicon glyphicon-chevron-up"></span>
+                    <span ng-show="sorting.desc" class="glyphicon glyphicon-chevron-down"></span>
+                  </span>Title
+    </button>
+
+    <div class="col-sm-12">
+      <div class="input-group">
+            <span class="input-group-addon">
+            <span class="glyphicon glyphicon-search"></span>
+            </span>
+        <input type="text" class="form-control" ng-model="filtering">
+      </div>
+    </div>
+
+    <li class='col-md-4 thumbnail' ng-repeat="product in products | filter: filtering | orderBy:sorting.by:sorting.desc">
+      <img ng-src="{{product.image}}">
+      <h3>{{product.title}}</h3>
+      <p>{{product.desc}}</p>
+      <button class='pull-left btn btn-default'>Buy it!</button>
+      <p class='pull-right'>{{product.price}}</p>
+    </li>
+
+  </div>
+  <div class='col-md-12'>
+    <h2>I want to order the products</h2>
+    <form novalidate name="f">
+      <div class="form-group" ng-class="{
+                    'has-error' : f.name.$invalid,
+                    'has-success': f.name.$valid}">
+        <label class="form-label">First and last name</label>
+        <input name="name" class="form-control" type="text" ng-minlength="4" required ng-model="newOrder.name" />
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : f.street.$invalid}">
+        <label class="form-label">Street</label>
+        <input name="name" class="form-control" type="text" ng-minlength="2" required ng-model="newOrder.street" />
+      </div>
+
+      <div class="form-group" ng-class="{'has-error' : f.postocde.$invalid}">
+        <label class="form-label">Postcode</label>
+        <input class="form-control" type="number" ng-minlength="1" required ng-model="newOrder.postcode"/>
+      </div>
+      <div class="form-group" ng-class="{'has-error' : f.city.$invalid}">
+        <label class="form-label">City</label>
+        <input class="form-control" type="text" ng-minlength="2" required ng-model="newOrder.city" />
+      </div>
+      <button class='btn btn-default' ng-click="addNewOrder(newOrder); newOrder = {}">Order the products</button>
+    </form>
+  </div>
+
+</div>
+
+
+
+
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
