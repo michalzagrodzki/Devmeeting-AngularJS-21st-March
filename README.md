@@ -1,4 +1,4 @@
-# Devmeeting-AngularJS-21st-March-
+# Devmeeting AngularJS
 Application done based on Devmeeting workshop.
 
 Used libraries:
