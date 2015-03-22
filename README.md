@@ -8,6 +8,7 @@ Used libraries:
 
 How to install:
 1. Clone repository.
+
 2. Navigate to folder where application is downloaded.
 3. Type in console: 'npm install' . It will install all dependecies related to project.
 
