@@ -52,32 +52,7 @@
     </li>
 
   </div>
-  <div class='col-md-12'>
-    <h2>I want to order the products</h2>
-    <form novalidate name="f">
-      <div class="form-group" ng-class="{
-                    'has-error' : f.name.$invalid,
-                    'has-success': f.name.$valid}">
-        <label class="form-label">First and last name</label>
-        <input name="name" class="form-control" type="text" ng-minlength="4" required ng-model="newOrder.name" />
-      </div>
 
-      <div class="form-group" ng-class="{'has-error' : f.street.$invalid}">
-        <label class="form-label">Street</label>
-        <input name="name" class="form-control" type="text" ng-minlength="2" required ng-model="newOrder.street" />
-      </div>
-
-      <div class="form-group" ng-class="{'has-error' : f.postocde.$invalid}">
-        <label class="form-label">Postcode</label>
-        <input class="form-control" type="number" ng-minlength="1" required ng-model="newOrder.postcode"/>
-      </div>
-      <div class="form-group" ng-class="{'has-error' : f.city.$invalid}">
-        <label class="form-label">City</label>
-        <input class="form-control" type="text" ng-minlength="2" required ng-model="newOrder.city" />
-      </div>
-      <button class='btn btn-default' ng-click="addNewOrder(newOrder); newOrder = {}">Order the products</button>
-    </form>
-  </div>
 
 </div>
 
